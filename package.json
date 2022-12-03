@@ -1,15 +1,32 @@
 {
-  "name": "@ruihuag/fakeryjs",
-  "version": "0.0.1-beta.0",
-  "description": "",
+  "name": "fakingjs",
+  "version": "0.0.1-beta.1",
+  "description": "伪造数据",
   "author": "ruihuag",
   "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "unpkg": "lib/",
+  "jsdelivr": "lib/",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "pub": "npm publish --access=public"
+    "prepare": "husky install",
+    "commitlint": "commitlint -e",
+    "build": "npx rollup -c --extend rollup.config.ts",
+    "tsprod": "npm run build && npm run start",
+    "dev": "ts-node-dev --respawn --transpile-only ./__test__/index.ts",
+    "test": "ts-node-dev --respawn --transpile-only ./__test__/index.ts",
+    "dev:js": "nodemon ./__test__/index.js",
+    "restart": "rimraf dist && npm run build && npm start",
+    "start": "node ./dist/index.js",
+    "eslint": "eslint . --ext .ts",
+    "eslint:fix": "eslint . --ext .ts --fix",
+    "patch": "npm version patch -f",
+    "pub": "npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/guanruihua/fakeryjs.git"
+    "url": "git://github.com/guanruihua/fakingjs.git"
   },
   "files": [
     "package.json",
@@ -18,8 +35,47 @@
     "index.js"
   ],
   "bugs": {
-    "url": "https://github.com/guanruihua/fakeryjs/issues"
+    "url": "https://github.com/guanruihua/fakingjs/issues"
   },
-  "homepage": "https://github.com/guanruihua/fakeryjs",
-  "keywords": []
+  "homepage": "https://github.com/guanruihua/fakingjs",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "npm",
+    "fakeryjs"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/bluebird": "^3.5.36",
+    "@types/node": "^16.11.6",
+    "@types/webpack-env": "^1.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "abandonjs": "^2.2.0",
+    "commitlint": "^17.2.0",
+    "eslint": "^8.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^12.0.3",
+    "lorem-ipsum": "^2.0.8",
+    "node-notifier": "^8.0.2",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.66.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "ts-toolbelt": "^9.6.0",
+    "typescript": "^4.4.4",
+    "unit-testing-js": "^0.2.0"
+  }
 }

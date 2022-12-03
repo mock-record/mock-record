@@ -1,0 +1,10 @@
+test/
+__test__/
+src/
+push.bat
+.gitignore
+jest.config.ts
+tsconfig.json
+node_modules
+.*
+*.config.ts
