@@ -1,7 +1,7 @@
-import { Mock } from '../../src'
+import { Fake } from '../../src'
 
 // cases
-export const cases = (index: string) => Mock({
+export const cases = (index: string) => Fake({
 	'key1': '@name',
 	[`key01${index}`]: 1,
 	[`key02${index}`]: 4,

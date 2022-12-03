@@ -2,10 +2,7 @@ import { logGroup } from 'abandonjs'
 import { cases } from './caseHoc'
 
 console.log('---issues---')
-
-
 	// minAndMaxRule
-
 	;[
 		// '0-1',
 		// '1-1',

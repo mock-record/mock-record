@@ -1,47 +1,47 @@
-import { Mock } from '../../src'
+import { Fake } from '../../src'
 import { logGroup } from 'abandonjs'
 
 logGroup(
 	'test-item',
-	Mock('@num(1.1,2.3)'),
-	Mock('@num(1.1,2.3)'),
-	Mock({ 'num|1-9': 1 }),
-	Mock({ 'num|12': 1 }),
-	Mock({
+	Fake('@num(1.1,2.3)'),
+	Fake('@num(1.1,2.3)'),
+	Fake({ 'num|1-9': 1 }),
+	Fake({ 'num|12': 1 }),
+	Fake({
 		"value|2-4": {
 			name: "@name"
 		}
 	}),
-	Mock('@name'),
-	Mock('@cname'),
-	Mock('@first'),
-	Mock('@last'),
-	Mock('@cfirst'),
-	Mock('@clast'),
-	Mock('@name'),
-	Mock('@char'),
-	Mock('@string'),
-	Mock('@title'),
-	Mock('@title(1,30)'),
-	Mock('@id'),
-	Mock('@uuid'),
-	Mock('@boolean'),
-	Mock('@cword'),
-	Mock('@uuid(xxyxxxyyy)'),
-	Mock('@string(3,4)'),
-	Mock('@uuid(xxx)'),
-	Mock({ t: '@title(3,4)' }),
-	Mock('@image(晓峰也牛逼,400x400,30)'),
-	Mock('@image(文字,200x200,123,456,png)'),
+	Fake('@name'),
+	Fake('@cname'),
+	Fake('@first'),
+	Fake('@last'),
+	Fake('@cfirst'),
+	Fake('@clast'),
+	Fake('@name'),
+	Fake('@char'),
+	Fake('@string'),
+	Fake('@title'),
+	Fake('@title(1,30)'),
+	Fake('@id'),
+	Fake('@uuid'),
+	Fake('@boolean'),
+	Fake('@cword'),
+	Fake('@uuid(xxyxxxyyy)'),
+	Fake('@string(3,4)'),
+	Fake('@uuid(xxx)'),
+	Fake({ t: '@title(3,4)' }),
+	Fake('@image(晓峰也牛逼,400x400,30)'),
+	Fake('@image(文字,200x200,123,456,png)'),
 
-	Mock({ "name&&a": "@name" }),
-	Mock({ 'name|3': '@name' }),
-	Mock({ 'name|3-5': '@name' }), 
+	Fake({ "name&&a": "@name" }),
+	Fake({ 'name|3': '@name' }),
+	Fake({ 'name|3-5': '@name' }), 
 
-	Mock('@char'),
-	Mock('@name'),
-	Mock('@cname'),
-	Mock('@string'),
-	Mock('@title'),
-	Mock('@title(1,30)')
+	Fake('@char'),
+	Fake('@name'),
+	Fake('@cname'),
+	Fake('@string'),
+	Fake('@title'),
+	Fake('@title(1,30)')
 )

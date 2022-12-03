@@ -1,17 +1,17 @@
 // import { isEmpty, random, select, selects, type } from 'abandonjs'
 // import { Template, BaseSupportObject, BaseSupportArray } from '../type'
-// import { Mock } from './Mock'
+// import { Fake } from './Fake'
 // import Constant from '../constant'
-import { MockRule } from '../rules'
+import { FakeRule } from '../rules'
 
 // const { RE_KEY, RE_Object_KEY, RE_Object_str_KEY } = Constant
 
-export function MockObject(template: Record<string, any>): Record<string, any> {
+export function FakeObject(template: Record<string, any>): Record<string, any> {
 	const result: Record<string, any> = {}
 
 	for (const key in template) {
 
-		MockRule(result, key, template[key])
+		FakeRule(result, key, template[key])
 
 		// 'type | [数字]' 特殊处理
 		// if (RE_KEY.test(key)) {
@@ -25,7 +25,7 @@ export function MockObject(template: Record<string, any>): Record<string, any> {
 		// 	if (!isEmpty(min) && min !== '1' && max === undefined) {
 		// 		const tmp_list: any[] = []
 		// 		let count = Number(min)
-		// 		while (count--) tmp_list.push(Mock(template[key]));
+		// 		while (count--) tmp_list.push(Fake(template[key]));
 		// 		result[name] = tmp_list
 		// 	}
 		// 	// 随机数
@@ -36,7 +36,7 @@ export function MockObject(template: Record<string, any>): Record<string, any> {
 		// 	if (!isEmpty(min) && !isEmpty(max)) {
 		// 		const tmp_list: any = []
 		// 		let tmp_max = Number(max)
-		// 		while (tmp_max--) { tmp_list.push(Mock(template[key])) }
+		// 		while (tmp_max--) { tmp_list.push(Fake(template[key])) }
 		// 		const val: Template = selects(tmp_list, Number(min), Number(max))
 		// 		result[name] = val || ''
 		// 	}
@@ -66,7 +66,7 @@ export function MockObject(template: Record<string, any>): Record<string, any> {
 		// 		while (len--) {
 		// 			const result_tmp: BaseSupportObject = {}
 		// 			tkeys.forEach((item: string): void => {
-		// 				result_tmp[item] = Mock(tmpVal)
+		// 				result_tmp[item] = Fake(tmpVal)
 		// 			})
 
 		// 				; (result[name] as BaseSupportArray).push(result_tmp)
@@ -74,12 +74,12 @@ export function MockObject(template: Record<string, any>): Record<string, any> {
 		// 	} else {
 		// 		result[name] = {}
 		// 		tkeys.forEach((item: string): void => {
-		// 			(result[name] as BaseSupportObject)[item] = Mock(tmpVal)
+		// 			(result[name] as BaseSupportObject)[item] = Fake(tmpVal)
 		// 		})
 		// 	}
 		// 	if (RE_Object_str_KEY.test(key)) { result[name] = JSON.stringify(result[name]) }
 		// } else {
-		// 	result[key] = Mock(template[key])
+		// 	result[key] = Fake(template[key])
 		// }
 	}
 

@@ -3,7 +3,7 @@ import { Template } from '../type'
 import * as Random from '../random'
 import { dictionary } from './dictionary'
 
-export function MockString(template: Template) {
+export function FakeString(template: Template) {
 
 	if (typeof template === 'string') {
 		if (template[0] !== '@') return template

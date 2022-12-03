@@ -1,5 +1,5 @@
-import { Random, RandomList, Mock, initDictionary, dictionary } from './generate'
+import { Random, RandomList, Fake, initDictionary, dictionary } from './generate'
 
-export { Random, RandomList, Mock, initDictionary, dictionary }
+export { Random, RandomList, Fake, initDictionary, dictionary }
 
-export default Mock
+export default Fake

@@ -1,25 +1,25 @@
 import { random, selects, concat, ceil } from "abandonjs"
 import { Template } from "../type"
-import { Mock as _Mock } from '../generate'
+import { Fake as _Fake } from '../generate'
 import { RuleType } from "./getRuleType"
 
 export function minAndMaxRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
 	const { valueType, name, min, max } = ruleType
 
-	const Mock = _Mock.bind(collect)
+	const Fake = _Fake.bind(collect)
 
 	if (Array.isArray(template)) {
 
 		const len = ceil(max / template.length)
 
 		if (len === 1) {
-			collect[name] = [Mock(template[0])]
+			collect[name] = [Fake(template[0])]
 			return
 		}
 
 		const newArray = concat(...new Array(len)
 			.fill(undefined)
-			.map(() => Mock(template)))
+			.map(() => Fake(template)))
 
 		collect[name] = selects(
 			newArray,
@@ -51,10 +51,10 @@ export function minAndMaxRule(collect: Record<string, any>, ruleType: RuleType, 
 	const randomNum = random(min, max)
 
 	if (valueType === 'String') {
-		collect[name] = new Array(ceil(randomNum)).fill('').map(() => Mock(template)).join('')
+		collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template)).join('')
 		return
 	}
 
-	collect[name] = new Array(ceil(randomNum)).fill('').map(() => Mock(template))
+	collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template))
 	return
 }

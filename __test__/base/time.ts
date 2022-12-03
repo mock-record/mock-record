@@ -1,17 +1,17 @@
-import { Mock as RMock } from '../../src'
+import { Fake as RFake } from '../../src'
 import { logGroup, once } from 'abandonjs'
 const logs = once(logGroup)
 
 logs(
   'Time',
-  RMock('@timeStamp'),
-  RMock('@nowTimeStamp'),
-  RMock('@now'),
-  RMock('@now(YYYY-MM-DD HH:mm:ss)'),
-  RMock('@date'),
-  RMock('@date(YYYY-MM-DD)'),
-  RMock('@date(YYYY-MM-DD HH:mm:ss)'),
-  RMock('@time'),
-  RMock('@time(HH:mm:ss)'),
-  RMock('@time(YYYY-MM-DD HH:mm:ss)'),
+  RFake('@timeStamp'),
+  RFake('@nowTimeStamp'),
+  RFake('@now'),
+  RFake('@now(YYYY-MM-DD HH:mm:ss)'),
+  RFake('@date'),
+  RFake('@date(YYYY-MM-DD)'),
+  RFake('@date(YYYY-MM-DD HH:mm:ss)'),
+  RFake('@time'),
+  RFake('@time(HH:mm:ss)'),
+  RFake('@time(YYYY-MM-DD HH:mm:ss)'),
 )
