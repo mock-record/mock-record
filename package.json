@@ -1,0 +1,25 @@
+{
+  "name": "@ruihuag/fakeryjs",
+  "version": "0.0.1-beta.0",
+  "description": "",
+  "author": "ruihuag",
+  "license": "MIT",
+  "scripts": {
+    "pub": "npm publish --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/guanruihua/fakeryjs.git"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "index.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/guanruihua/fakeryjs/issues"
+  },
+  "homepage": "https://github.com/guanruihua/fakeryjs",
+  "keywords": []
+}
