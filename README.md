@@ -1,4 +1,6 @@
-# 描述
+# fakingjs
+
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![npm version](https://img.shields.io/npm/v/fakingjs.svg?style=flat)](https://www.npmjs.com/package/fakingjs)
 
 - 虚拟数据生成
 
