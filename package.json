@@ -1,6 +1,6 @@
 {
   "name": "fakingjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "伪造数据",
   "author": "ruihuag",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "package.json",
     "README.md",
     "LICENSE",
-    "index.js"
+    "lib/"
   ],
   "bugs": {
     "url": "https://github.com/guanruihua/fakingjs/issues"
