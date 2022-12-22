@@ -1,7 +1,6 @@
 import { random, select, selects } from "abandonjs"
-import { Template } from "../type"
+import { Template, RuleType } from "../type"
 import { Fake as _Fake } from '../generate'
-import { RuleType } from "./getRuleType"
 
 // 使用 +number 格式
 export function randomRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {

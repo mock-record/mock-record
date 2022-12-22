@@ -1,3 +1,22 @@
+
+export interface RuleType extends Record<string, any> {
+	name: string
+	valueType: string
+	rule?: string
+	min?: number
+	max?: number
+	dmin?: number
+	dmax?: number
+	count?: number
+	/**
+	 * 单数字: +number
+	 */
+	random?: boolean
+	multKey?: string[]
+	handler?: any
+	_this: any
+}
+
 // 当前包支持的基础数据类型
 export type BaseSupportType = string | number | boolean | undefined | null | never | unknown
 // export type BaseSupportType = string | number | boolean | undefined | null

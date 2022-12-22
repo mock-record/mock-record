@@ -1,24 +1,6 @@
-import { Template } from '../type'
+import { Template, RuleType } from '../type'
 import { type } from 'abandonjs'
 import { dictionary } from '../generate/dictionary'
-
-export interface RuleType extends Record<string, any> {
-	name: string
-	valueType: string
-	rule?: string
-	min?: number
-	max?: number
-	dmin?: number
-	dmax?: number
-	count?: number
-	/**
-	 * 单数字: +number
-	 */
-	random?: boolean
-	multKey?: string[]
-	handler?: any
-	_this: any
-}
 
 const toNumber = (val?: number | string) => {
 	if (val === undefined) return undefined

@@ -36,7 +36,7 @@ logGroup(
 
 	Fake({ "name&&a": "@name" }),
 	Fake({ 'name|3': '@name' }),
-	Fake({ 'name|3-5': '@name' }), 
+	Fake({ 'name|3-5': '@name' }),
 
 	Fake('@char'),
 	Fake('@name'),
