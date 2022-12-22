@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/guanruihua/fakingjs.git"
+    "url": "git://github.com/fakingjs/fakingjs.git"
   },
   "files": [
     "package.json",
@@ -35,9 +35,9 @@
     "lib/"
   ],
   "bugs": {
-    "url": "https://github.com/guanruihua/fakingjs/issues"
+    "url": "https://github.com/fakingjs/fakingjs/issues"
   },
-  "homepage": "https://github.com/guanruihua/fakingjs",
+  "homepage": "https://github.com/fakingjs/fakingjs",
   "keywords": [
     "typescript",
     "javascript",
