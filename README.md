@@ -1,3 +1,38 @@
+```js
+ "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/bluebird": "^3.5.36",
+    "@types/node": "^16.11.6",
+    "@types/webpack-env": "^1.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "abandonjs": "^2.2.0",
+    "commitlint": "^17.2.0",
+    "eslint": "^8.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^12.0.3",
+    "lorem-ipsum": "^2.0.8",
+    "node-notifier": "^8.0.2",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.66.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "ts-toolbelt": "^9.6.0",
+    "typescript": "^4.4.4",
+    "unit-testing-js": "^0.2.0",
+```
+
 # fakingjs
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![npm version](https://img.shields.io/npm/v/fakingjs.svg?style=flat)](https://www.npmjs.com/package/fakingjs)
