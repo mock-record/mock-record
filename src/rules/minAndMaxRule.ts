@@ -1,60 +1,58 @@
-import { random, selects, concat, ceil } from "abandonjs"
-import { Template } from "../type"
-import { Fake as _Fake } from '../generate'
-import { RuleType } from "./getRuleType"
+import { random, selects, concat, ceil, ObjectType } from "abandonjs"
+import { Template, RuleType } from "../type"
 
-export function minAndMaxRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
-	const { valueType, name, min, max } = ruleType
+export function minAndMaxRuleHoc(_Fake: (template) => any) {
+	return function (collect: ObjectType<any>, ruleType: RuleType, template: Template) {
+		const { valueType, name, min, max } = ruleType
 
-	const Fake = _Fake.bind(collect)
+		const Fake = _Fake.bind(collect)
 
-	if (Array.isArray(template)) {
+		if (Array.isArray(template)) {
 
-		const len = ceil(max / template.length)
+			const len = ceil(max / template.length)
 
-		if (len === 1) {
-			collect[name] = [Fake(template[0])]
+			if (len === 1) {
+				collect[name] = [Fake(template[0])]
+				return
+			}
+
+			const newArray = concat(...new Array(len)
+				.fill(undefined)
+				.map(() => Fake(template)))
+
+			collect[name] = selects(
+				newArray,
+				min,
+				max < newArray.length ? max : newArray.length
+			)
 			return
 		}
 
-		const newArray = concat(...new Array(len)
-			.fill(undefined)
-			.map(() => Fake(template)))
+		if (valueType === 'Number') {
 
-		collect[name] = selects(
-			newArray,
-			min,
-			max < newArray.length ? max : newArray.length
-		)
-		return
-	}
+			let newValue = random(min, max)
 
+			if (min === 0 && max === undefined) {
+				newValue = 0
+			}
 
+			if (min === 1 && max === undefined) {
+				newValue = collect[name]
+			}
 
-	if (valueType === 'Number') {
+			collect[name] = newValue
 
-		let newValue = random(min, max)
-
-		if (min === 0 && max === undefined) {
-			newValue = 0
+			return
 		}
 
-		if (min === 1 && max === undefined) {
-			newValue = collect[name]
+		const randomNum = random(min, max)
+
+		if (valueType === 'String') {
+			collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template)).join('')
+			return
 		}
 
-		collect[name] = newValue
-	
+		collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template))
 		return
 	}
-
-	const randomNum = random(min, max)
-
-	if (valueType === 'String') {
-		collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template)).join('')
-		return
-	}
-
-	collect[name] = new Array(ceil(randomNum)).fill('').map(() => Fake(template))
-	return
 }

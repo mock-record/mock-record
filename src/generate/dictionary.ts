@@ -7,5 +7,3 @@ export function initDictionary(row: Record<string, any>) {
 		dictionary.set(key, row[key])
 	}
 }
-
-
