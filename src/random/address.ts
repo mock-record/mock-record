@@ -1,5 +1,6 @@
 
-import { random, select, selects } from 'abandonjs'
+import { select, selects } from 'abandonjs'
+import { random } from '0math'
 import Constant from '../constant'
 import { DICT_FIXED, REGION } from '../dictionary'
 

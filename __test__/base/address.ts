@@ -1,50 +1,37 @@
-import { Fake } from '../../src'
-import { logGroup } from 'abandonjs'
+import { testMock } from '../config'
 
-logGroup(
-  'address',
-  // Fake('@ip'),
-  // Fake('@ip()'),
-  // Fake('@ip6()'),
-  Fake('@url()'),
-  // Fake('@domain'),
-  // Fake('@domain()'),
-  // Fake('@email()'),
-)
-
-logGroup(
-  'address',
-  Fake('@region'),
-  Fake('@province'),
-  Fake('@city'),
-  Fake('@district'),
-  Fake('@address'),
-  Fake('@address(RR PP CC DD)'),
-)
-logGroup(
-  'address',
-  Fake('@region'),
-  Fake('@province'),
-  Fake('@city'),
-  Fake('@district'),
-  Fake('@address'),
-  Fake('@address(RR PP CC DD)'),
-)
-logGroup(
-  'address',
-  Fake('@region'),
-  Fake('@province'),
-  Fake('@city'),
-  Fake('@district'),
-  Fake('@address'),
-  Fake('@address(RR PP CC DD)'),
-)
-logGroup(
-  'address',
-  Fake('@region'),
-  Fake('@province'),
-  Fake('@city'),
-  Fake('@district'),
-  Fake('@address'),
-  Fake('@address(RR PP CC DD)'),
+testMock('address',
+  [
+    '@ip',
+    '@ip()',
+    '@ip6()',
+    '@url()',
+    '@domain',
+    '@domain()',
+    '@email()',
+    '@region',
+    '@province',
+    '@city',
+    '@district',
+    '@address',
+    '@address(RR PP CC DD)',
+    '@region',
+    '@province',
+    '@city',
+    // '@district',
+    '@address',
+    '@address(RR PP CC DD)',
+    '@region',
+    '@province',
+    '@city',
+    // '@district',
+    '@address',
+    '@address(RR PP CC DD)',
+    '@region',
+    '@province',
+    '@city',
+    '@district',
+    '@address',
+    '@address(RR PP CC DD)',
+  ]
 )

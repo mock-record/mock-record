@@ -1,10 +1,11 @@
-import { Fake } from '../../src'
-import { logGroup } from 'abandonjs'
+import { testMock } from "../config"
 
-logGroup('paragraph',
-	Fake('@para(2)'),
-	// Fake('@paragraph'),
-	// Fake('@paragraph(2)'),
-	// Fake('@paragraph(3)'),
-	// Fake('@paragraph(4)'),
+testMock('paragraph',
+	[
+		('@para(2)'),
+		('@paragraph'),
+		('@paragraph(2)'),
+		('@paragraph(3)'),
+		('@paragraph(4)'),
+	]
 )

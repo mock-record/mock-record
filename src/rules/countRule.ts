@@ -1,13 +1,13 @@
 import { random, select, selects, concat, ceil } from "abandonjs"
 import { Template } from "../type"
-import { Fake as _Fake } from '../generate'
+import { Mock as _Mock } from '../generate'
 import type { RuleType } from "../type"
 
 export function countRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
 
 	const { valueType, name, count } = ruleType
-	const Fake = _Fake.bind(collect)
-	const tmp = Fake(template)
+	const Mock = _Mock.bind(collect)
+	const tmp = Mock(template)
 
 	if (count < 1) {
 		collect[name] = undefined
@@ -27,7 +27,7 @@ export function countRule(collect: Record<string, any>, ruleType: RuleType, temp
 			collect[name] = selects(
 				concat(...new Array(ceil(count / tmp.length))
 					.fill(undefined)
-					.map(() => Fake(template))),
+					.map(() => Mock(template))),
 				count,
 				count
 			)
@@ -49,6 +49,6 @@ export function countRule(collect: Record<string, any>, ruleType: RuleType, temp
 		return
 	}
 
-	collect[name] = new Array(count).fill('').map(() => Fake(template)).join('')
+	collect[name] = new Array(count).fill('').map(() => Mock(template)).join('')
 	return
 }

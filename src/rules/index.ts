@@ -1,21 +1,21 @@
 // import { random } from "abandonjs"
 // import { Template } from "../type"
-// import { Fake as _Fake } from '../generate'
+// import { Mock as _Mock } from '../generate'
 // import { getRuleType } from './getRuleType'
 // import { randomRule } from './randomRule'
 // import { countRule } from './countRule'
 // import { minAndMaxRule } from "./minAndMaxRule"
 // import { dminAndDmaxRule } from './dminAndDmaxRule'
 
-// export function FakeRule(collect: Record<string, any>, key: string, template: Template): void {
+// export function MockRule(collect: Record<string, any>, key: string, template: Template): void {
 
 // 	const ruleType = getRuleType(key, template)
 // 	const { rule = '', valueType, name, min, max, dmin, multKey = [], count, handler } = ruleType
 
-// 	// const Fake = _Fake.bind(collect)
+// 	// const Mock = _Mock.bind(collect)
 
 // 	// if (key.indexOf('|') < 0) {
-// 	// 	collect[key] = Fake(template)
+// 	// 	collect[key] = Mock(template)
 // 	// 	return
 // 	// }
 
@@ -23,7 +23,7 @@
 // 	if (multKey.length > 0) {
 // 		collect[name] = {}
 // 		multKey.forEach(item => {
-// 			FakeRule(collect[name], item + '|' + rule, template)
+// 			MockRule(collect[name], item + '|' + rule, template)
 // 		})
 // 		if (handler) collect[name] = handler(collect[name])
 // 		return

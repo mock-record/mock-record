@@ -1,8 +1,9 @@
 import { RandomList } from '../../src'
-import { logGroup } from 'abandonjs'
+import { test } from 'unit-testing-js'
+import { isArray } from 'abandonjs'
 
-logGroup('test',
-  RandomList(3, 5)({ name: '@name' }),
-  RandomList(3, 9)('@name'),
+test('test', isArray,
+  { param: RandomList(3, 5)({ name: '@name' }), tobe: true },
+  { param: RandomList(3, 9)('@name'), tobe: true },
 )
 

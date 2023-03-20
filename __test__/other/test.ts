@@ -1,4 +1,4 @@
-import { Fake, initDictionary } from '../../src'
+import { mock, initDictionary } from '../../src'
 import { logGroup } from 'abandonjs'
 
 initDictionary({
@@ -9,18 +9,18 @@ initDictionary({
 })
 
 logGroup('test',
-  Fake('@bbb(123,456)'),
-  Fake('@aaa'),
-  Fake({ 'nameX|2': { a: 'a', 'b': 'b', c: 'c' } }),
-  Fake({ 'nameX|1': ['a', 'b', 'c'] }),
-  Fake({ 'nameX': '@name', 'nameX2': '@name' }),
-  Fake({ 'nameOne|10': 10 }),
-  Fake({ 'nameOne|1': ['a', 'b', 'c', 'd'] }),
-  Fake({ 'nameOne|2': ['a', '@name', 'c', 'd'] }),
-  Fake({ 'nameX|2-4': '@name' }),
-  Fake({ 'nameX|0-2': '@name' }),
-  Fake({ 'nameX|2-4': '@name' }),
-  Fake({
+  mock('@bbb(123,456)'),
+  mock('@aaa'),
+  mock({ 'nameX|2': { a: 'a', 'b': 'b', c: 'c' } }),
+  mock({ 'nameX|1': ['a', 'b', 'c'] }),
+  mock({ 'nameX': '@name', 'nameX2': '@name' }),
+  mock({ 'nameOne|10': 10 }),
+  mock({ 'nameOne|1': ['a', 'b', 'c', 'd'] }),
+  mock({ 'nameOne|2': ['a', '@name', 'c', 'd'] }),
+  mock({ 'nameX|2-4': '@name' }),
+  mock({ 'nameX|0-2': '@name' }),
+  mock({ 'nameX|2-4': '@name' }),
+  mock({
     'list|1-3': {
       a: '@name',
       uid: '@uuid',
