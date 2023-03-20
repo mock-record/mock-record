@@ -1,5 +1,5 @@
 {
-  "name": "fakingjs",
+  "name": "mock-record",
   "version": "0.3.0",
   "description": "伪造数据",
   "author": "ruihuag",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fakingjs/fakingjs.git"
+    "url": "git://github.com/mock-record/mock-record.git"
   },
   "files": [
     "package.json",
@@ -35,9 +35,9 @@
     "lib/"
   ],
   "bugs": {
-    "url": "https://github.com/fakingjs/fakingjs/issues"
+    "url": "https://github.com/mock-record/mock-record/issues"
   },
-  "homepage": "https://github.com/fakingjs/fakingjs",
+  "homepage": "https://github.com/mock-record/mock-record",
   "keywords": [
     "typescript",
     "javascript",

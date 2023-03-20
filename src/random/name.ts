@@ -1,7 +1,6 @@
-import Util from '../util'
 import { nullToStringFn } from '../type'
 import { male, female, cfirstNames, clastNames } from '../dictionary'
-const { pick } = Util
+import { pick } from 'abandonjs'
 
 export const first: nullToStringFn = (): string => pick(male.concat(female))
 export const last: nullToStringFn = (): string => pick(male)

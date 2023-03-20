@@ -1,7 +1,7 @@
 import { random, select, selects, concat, ceil } from "abandonjs"
 import { Template } from "../type"
 import { Fake as _Fake } from '../generate'
-import { RuleType } from "./getRuleType"
+import type { RuleType } from "../type"
 
 export function countRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
 
