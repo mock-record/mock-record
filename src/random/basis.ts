@@ -1,4 +1,5 @@
-import { random, select } from 'abandonjs'
+import { select } from 'abandonjs'
+import { random } from '0math'
 import Constant from '../constant'
 
 const { CHARS } = Constant

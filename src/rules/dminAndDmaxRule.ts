@@ -1,4 +1,4 @@
-import { random } from "abandonjs"
+import { random } from "0math"
 import { RuleType } from "../type"
 
 export function dminAndDmaxRule(collect: Record<string, any>, ruleType: RuleType) {

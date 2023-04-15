@@ -1,31 +1,29 @@
-import { type, random, select, selects, concat, ceil, ObjectType } from 'abandonjs'
+import { type, select, selects, concat, ObjectType, isFunction } from 'abandonjs'
+import { ceil, random } from '0math'
 import { Template, RuleType } from '../type'
 import * as Random from '../random'
 import { dictionary } from './dictionary'
 import { getRuleType } from '../rules/getRuleType'
-// import { randomRule } from '../rules/randomRule'
-// import { countRule } from '../rules/countRule'
-// import { minAndMaxRule } from "../rules/minAndMaxRule"
 import { dminAndDmaxRule } from '../rules/dminAndDmaxRule'
 
 
 export function minAndMaxRule(collect: ObjectType<any>, ruleType: RuleType, template: Template) {
 	const { valueType, name, min, max } = ruleType
 
-	const _Fake = Fake.bind(collect)
+	const _mock = mock.bind(collect)
 
 	if (Array.isArray(template)) {
 
 		const len = ceil(max / template.length)
 
 		if (len === 1) {
-			collect[name] = [_Fake(template[0])]
+			collect[name] = [_mock(template[0])]
 			return
 		}
 
 		const newArray = concat(...new Array(len)
 			.fill(undefined)
-			.map(() => _Fake(template)))
+			.map(() => _mock(template)))
 
 		collect[name] = selects(
 			newArray,
@@ -57,32 +55,32 @@ export function minAndMaxRule(collect: ObjectType<any>, ruleType: RuleType, temp
 	const randomNum = random(min, max)
 
 	if (valueType === 'String') {
-		collect[name] = new Array(ceil(randomNum)).fill('').map(() => _Fake(template)).join('')
+		collect[name] = new Array(ceil(randomNum)).fill('').map(() => _mock(template)).join('')
 		return
 	}
 
-	collect[name] = new Array(ceil(randomNum)).fill('').map(() => _Fake(template))
+	collect[name] = new Array(ceil(randomNum)).fill('').map(() => _mock(template))
 	return
 }
 
 export function randomRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
-	const _Fake = Fake.bind(collect)
+	const _mock = mock.bind(collect)
 	const { name, min, max, handler, valueType } = ruleType
 
 	if (Array.isArray(template)) {
 		if (min === 1) {
-			collect[name] = select(_Fake(template))
+			collect[name] = select(_mock(template))
 		}
 		if (min > 1) {
-			collect[name] = selects(_Fake(template), min, min)
+			collect[name] = selects(_mock(template), min, min)
 		}
 
 	} else if (valueType === 'Number') {
 		collect[name] = random(template as number, template as number ** (min + 1))
 	} else if (valueType === 'String') {
-		collect[name] = new Array(random(min, max)).fill('').map(() => _Fake(template)).join('')
+		collect[name] = new Array(random(min, max)).fill('').map(() => _mock(template)).join('')
 	} else {
-		collect[name] = _Fake(template)
+		collect[name] = _mock(template)
 	}
 
 	if (handler) collect[name] = handler(collect[name])
@@ -91,8 +89,8 @@ export function randomRule(collect: Record<string, any>, ruleType: RuleType, tem
 export function countRule(collect: Record<string, any>, ruleType: RuleType, template: Template) {
 
 	const { valueType, name, count } = ruleType
-	const _Fake = Fake.bind(collect)
-	const tmp = _Fake(template)
+	const _mock = mock.bind(collect)
+	const tmp = _mock(template)
 
 	if (count < 1) {
 		collect[name] = undefined
@@ -112,7 +110,7 @@ export function countRule(collect: Record<string, any>, ruleType: RuleType, temp
 			collect[name] = selects(
 				concat(...new Array(ceil(count / tmp.length))
 					.fill(undefined)
-					.map(() => _Fake(template))),
+					.map(() => _mock(template))),
 				count,
 				count
 			)
@@ -134,20 +132,20 @@ export function countRule(collect: Record<string, any>, ruleType: RuleType, temp
 		return
 	}
 
-	collect[name] = new Array(count).fill('').map(() => _Fake(template)).join('')
+	collect[name] = new Array(count).fill('').map(() => _mock(template)).join('')
 	return
 }
 
 
-export function FakeRule(collect: Record<string, any>, key: string, template: Template): void {
+export function mockRule(collect: Record<string, any>, key: string, template: Template): void {
 
 	const ruleType = getRuleType(key, template)
 	const { rule = '', valueType, name, min, max, dmin, multKey = [], count, handler } = ruleType
 
-	// const Fake = _Fake.bind(collect)
+	// const mock = _mock.bind(collect)
 
 	// if (key.indexOf('|') < 0) {
-	// 	collect[key] = Fake(template)
+	// 	collect[key] = mock(template)
 	// 	return
 	// }
 
@@ -155,7 +153,7 @@ export function FakeRule(collect: Record<string, any>, key: string, template: Te
 	if (multKey.length > 0) {
 		collect[name] = {}
 		multKey.forEach(item => {
-			FakeRule(collect[name], item + '|' + rule, template)
+			mockRule(collect[name], item + '|' + rule, template)
 		})
 		if (handler) collect[name] = handler(collect[name])
 		return
@@ -210,13 +208,13 @@ export function RandomList(min: number, max: number) {
 	return function (template: Template) {
 		const list = []
 		for (let i = 0; i < __random__; i++) {
-			list.push(Fake(template))
+			list.push(mock(template))
 		}
 		return list
 	}
 }
 
-export function FakeString(template: Template) {
+export function mockString(template: Template) {
 
 	if (typeof template === 'string') {
 		if (template[0] !== '@') return template
@@ -229,52 +227,52 @@ export function FakeString(template: Template) {
 			}
 			return dictionary.get(controlIndex)
 		}
-
-		return Random[controlIndex](...params)
+		if (isFunction(Random[controlIndex]))
+			return Random[controlIndex](...params)
 	}
 
 	return ''
 }
 
-export function FakeObject(template: Record<string, any>): Record<string, any> {
+export function mockObject(template: Record<string, any>): Record<string, any> {
 	const result: Record<string, any> = {}
 
 	for (const key in template) {
 
 		if (key.indexOf('|') < 0) {
-			result[key] = Fake(template[key])
+			result[key] = mock(template[key])
 			continue
 		}
 
-		FakeRule(result, key, template[key])
+		mockRule(result, key, template[key])
 	}
 
 	return result
 }
 
-export function FakeFunction(template: Template) {
+export function mockFunction(template: Template) {
 	if (typeof template === 'function' && type(template) === 'Function')
 		return (template as (...args: any[]) => any).bind(this)(template)
 	return ''
 }
 
-export function FakeArray(template: Template) {
+export function mockArray(template: Template) {
 
 	if (Array.isArray(template)) {
-		return template.map(tmp => Fake(tmp))
+		return template.map(tmp => mock(tmp))
 	}
 
 	return []
 }
 
-export function Fake(template: Template) {
+export function mock(template: Template) {
 
 	try {
 		switch (type(template)) {
-			case 'Object': return FakeObject.bind(this)(template)
-			case 'String': return FakeString.bind(this)(template)
-			case 'Array': return FakeArray.bind(this)(template)
-			case 'Function': return FakeFunction.bind(this)(template)
+			case 'Object': return mockObject.bind(this)(template)
+			case 'String': return mockString.bind(this)(template)
+			case 'Array': return mockArray.bind(this)(template)
+			case 'Function': return mockFunction.bind(this)(template)
 			default:
 				return template
 		}

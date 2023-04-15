@@ -1,61 +1,26 @@
-```js
- "@babel/core": "^7.16.12",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-typescript": "^7.16.7",
-    "@commitlint/config-conventional": "^17.2.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@types/bluebird": "^3.5.36",
-    "@types/node": "^16.11.6",
-    "@types/webpack-env": "^1.16.3",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "abandonjs": "^2.2.0",
-    "commitlint": "^17.2.0",
-    "eslint": "^8.7.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^8.0.2",
-    "lint-staged": "^12.0.3",
-    "lorem-ipsum": "^2.0.8",
-    "node-notifier": "^8.0.2",
-    "prettier": "^2.4.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.66.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-eslint": "^7.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.1",
-    "ts-node": "^10.4.0",
-    "ts-node-dev": "^1.1.8",
-    "ts-toolbelt": "^9.6.0",
-    "typescript": "^4.4.4",
-    "unit-testing-js": "^0.2.0",
-```
+# mock-record
 
-# fakingjs
-
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![npm version](https://img.shields.io/npm/v/fakingjs.svg?style=flat)](https://www.npmjs.com/package/fakingjs)
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![npm version](https://img.shields.io/npm/v/mock-record.svg?style=flat)](https://www.npmjs.com/package/mock-record)
 
 - 虚拟数据生成
 
 ## 使用
 
 ```shell
-npm install fakingjs
+npm install mock-record
 ```
 
 ```js
-import { Fake } from 'fakingjs'
+import { mock } from 'mock-record'
 
-Fake("@name")
+mock("@name")
 => 'Ruihuag'
 ```
 
 ## 说明
 
 ```js
-Fake({
+mock({
   'name|rule|key1,key2,key3...|[DictionaryKey]':'@name'
 })
 ```
@@ -68,18 +33,18 @@ Fake({
 ## 规则使用
 
 ```js
-Fake("@name")
+mock("@name")
 => 'Ruihuag'
 ```
 
 ## `name|number`
 
 ```js
- Fake({ 'name': '@name' })
- Fake({ 'name|1': 1 })
- Fake({ 'name|1': '@name' })
- Fake({ 'name|3': '@name' })
- Fake({ 'name|3': 1 })
+ mock({ 'name': '@name' })
+ mock({ 'name|1': 1 })
+ mock({ 'name|1': '@name' })
+ mock({ 'name|3': '@name' })
+ mock({ 'name|3': 1 })
  =>
   { name: 'Ruihuag' }
   { name: 1 }
@@ -92,14 +57,14 @@ Fake("@name")
 ## 范围 `name|2-222`
 
 ```js
-Fake({"name|3-5":"@name"})
+mock({"name|3-5":"@name"})
 => { name: [ 'Jeffrey', 'Jose', 'Gary', 'William' ] }
 ```
 
 ## 指定数量 `name|12`
 
 ```js
-Fake({"name|3":"@name"})
+mock({"name|3":"@name"})
 =>  { name: [ 'Christopher', 'Daniel', 'Richard' ] }
 ```
 
@@ -163,7 +128,7 @@ Fake({"name|3":"@name"})
 - 优先级最高, 会覆盖包原本规则
 
 ```js
-import { Fake, initDictionary, dictionary } from '../src'
+import { mock, initDictionary, dictionary } from '../src'
 
 // 可以查看已经设置的规则字典
 dictionary
@@ -175,8 +140,8 @@ initDictionary({
   }
 })
 
-Fake('@bbb(123,456)') // 123---456
-Fake('@aaa') // ababab
+mock('@bbb(123,456)') // 123---456
+mock('@aaa') // ababab
 
 ```
 
@@ -207,15 +172,14 @@ Fake('@aaa') // ababab
 
 ### 文本
 
-|     操作符      |  描述  |                                                                                                                                                                                                                                                                                                                                                                                                                               结果                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :-------------: | :----: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|    `@title`     |  标题  |                                                                                                                                                                                                                                                                                                                                                                                                                            `土好保观`                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `@title(3,30)`  |  标题  |                                                                                                                                                                                                                                                                                                                                                                                                    `传年圆美石所技道只式器知老引明说外海专性油复队运构科文重`                                                                                                                                                                                                                                                                                                                                                                                                    |
-|    `@cword`     | 中文字 |                                                                                                                                                                                                                                                                                                                                                                                                                               `厂`                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `@sentence(2)`  |  句子  |                                                                                                                                                                                                                                                                                                                                                                                  `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`                                                                                                                                                                                                                                                                                                                                                                                  |
-|   `@sent(2)`    |  句子  |                                                                                                                                                                                                                                                                                                                                                                                  `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`                                                                                                                                                                                                                                                                                                                                                                                  |
-| `@paragraph(2)` | 自然段 | <div style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Laboris ex ad duis reprehenderit deserunt enim. In laboris Lorem est pariatur eu officia incididunt ipsum sint adipisicing nisi ullamco ut do. Quis ullamco tempor exercitation duis elit duis duis adipisicing. Occaecat pariatur reprehenderit consectetur amet non cillum velit eu cupidatat ad. Reprehenderit excepteur sint commodo officia adipisicing id labore veniam amet irure. Cillum nisi voluptate exercitation minim in ut aliquip laborum duis. Lorem veniam amet magna labore reprehenderit culpa adipisicing eiusmod ipsum exercitation.</br>&nbsp;&nbsp;&nbsp;&nbsp;Eiusmod minim aliqua dolor nostrud et. Mollit ad ex laborum ea deserunt incididunt pariatur. Ipsum exercitation Lorem consectetur dolor incididunt excepteur labore proident cupidatat dolore consequat dolor.</div> |
-|   `@para(2)`    | 自然段 | <div style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Laboris ex ad duis reprehenderit deserunt enim. In laboris Lorem est pariatur eu officia incididunt ipsum sint adipisicing nisi ullamco ut do. Quis ullamco tempor exercitation duis elit duis duis adipisicing. Occaecat pariatur reprehenderit consectetur amet non cillum velit eu cupidatat ad. Reprehenderit excepteur sint commodo officia adipisicing id labore veniam amet irure. Cillum nisi voluptate exercitation minim in ut aliquip laborum duis. Lorem veniam amet magna labore reprehenderit culpa adipisicing eiusmod ipsum exercitation.</br>&nbsp;&nbsp;&nbsp;&nbsp;Eiusmod minim aliqua dolor nostrud et. Mollit ad ex laborum ea deserunt incididunt pariatur. Ipsum exercitation Lorem consectetur dolor incididunt excepteur labore proident cupidatat dolore consequat dolor.</div> |
+|     操作符      |  描述  |结果|
+| :-------------: | :----: | :------------------------: |
+|    `@title`     |  标题  |`土好保观`|
+| `@title(3,30)`  |  标题  | `传年圆美石所技道只式器知老引明说外海专性油复队运构科文重`| |    `@cword`     | 中文字 |`厂`|
+| `@sentence(2)`  |  句子  | `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`|
+|   `@sent(2)`    |  句  | `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`|
+| `@paragraph(2)` | 自然段 | <div style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Laboris ex ad duis  ... eiusmod ipsum exercitation.</br>&nbsp;&nbsp;&nbsp;&nbsp;Eiusmod minim aliqua dolor nostrud et. ... cupidatat dolore consequat dolor.</div> |
+|   `@para(2)`    | 自然段 | <div style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Laboris ex ad duis reprehenderit deserunt enim. In laboris ... dolor.</div> |
 
 ### 居住地址
 
@@ -266,19 +230,19 @@ Fake('@aaa') // ababab
 | :--------------------------- | :------------- | :-------------------- |
 | `@now`                       | 现在           | `2022-06-08 16:58:16` |
 | `@now(YYYY-MM-DD HH:mm:ss)`  | 现在           | `2022-06-08 16:58:16` |
-| `@date`                      | 随机日期       | `2021-09-27`          |
-| `@date(YYYY-MM-DD)`          | 随机日期       | `2022-03-28`          |
-| `@date(YYYY-MM-DD HH:mm:ss)` | 随机日期       | `2020-03-24 22:58:16` |
-| `@time`                      | 随机时间       | `22:58:16`            |
-| `@time(HH:mm:ss)`            | 随机时间       | `04:58:16`            |
-| `@time(YYYY-MM-DD HH:mm:ss)` | 随机时间       | `2020-06-27 22:58:16` |
-| `@timeStamp`                 | 随机时间戳     | `1604703768135`       |
+| `@date`                      | 日期       | `2021-09-27`          |
+| `@date(YYYY-MM-DD)`          | 日期       | `2022-03-28`          |
+| `@date(YYYY-MM-DD HH:mm:ss)` | 日期       | `2020-03-24 22:58:16` |
+| `@time`                      | 时间       | `22:58:16`            |
+| `@time(HH:mm:ss)`            | 时间       | `04:58:16`            |
+| `@time(YYYY-MM-DD HH:mm:ss)` | 时间       | `2020-06-27 22:58:16` |
+| `@timeStamp`                 | 时间戳     | `1604703768135`       |
 | `@nowTimeStamp`              | 当前时间时间戳 | `1604703768135`       |
 
 ### 特殊
 
-|                    操作符                     | 描述  |                  结果                  |
-| :-------------------------------------------: | :---: | :------------------------------------: |
+|操作符| 描述  |结果|
+| :----------- | :---: | :-----------------------: |
 |                     `@id`                     |  id   |           `3191230364936506`           |
 |                    `@uuid`                    | uuid  | `326be748-57bd-c2d0-84f4-99bb488a4292` |
 | `@uuid(xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx)` | uuid  | `326be748-57bd-c2d0-84f4-99bb488a4292` |
