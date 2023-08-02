@@ -73,7 +73,7 @@ mock({"name|3":"@name"})
 ### 基础使用 `{'name||key1,key2,key3':'@name'}`
 
 ```js
-{name: { key1: 'Mark', key2: 'Jason', key3: 'Thomas' }`}
+{name: { key1: 'Mark', key2: 'Jason', key3: 'Thomas' }}
 ```
 
 ### 指定数量 `{'name|2|key1,key2,key3': "@name"}`
@@ -206,7 +206,7 @@ mock('@aaa') // ababab
 | `@ip`     | ip      | 242.86.47.174                           |
 | `@ip6()`  | ipv6    | e60b:3d50:be5c:ea37:3005:8a35:846e:1aeb |
 | `@domain` | web地址 | opubztw.xxq                             |
-| `@email`  | 邮箱    | cxydhhsfxqzki@nipik.ftnyl               |
+| `@email`  | 邮箱    | <cxydhhsfxqzki@nipik.ftnyl>               |
 
 ### 颜色
 

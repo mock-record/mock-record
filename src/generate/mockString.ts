@@ -1,4 +1,4 @@
-import { type } from 'abandonjs'
+import { type } from 'asura-eye'
 import { Template } from '../type'
 import * as Random from '../random'
 import { dictionary } from './dictionary'

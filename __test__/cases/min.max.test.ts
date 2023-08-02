@@ -57,6 +57,7 @@ export const cases = (index: string) => mock({
 		1,
 		2,
 		'1-3.5',
+		// '+'
 	].forEach(item => {
 		logGroup(`key|${item}`, cases(`|${item}`))
 	})

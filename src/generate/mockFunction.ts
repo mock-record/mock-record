@@ -1,5 +1,5 @@
-import { type } from 'abandonjs'
-import { Template } from '../type'
+import { type } from 'asura-eye'
+import { type Template } from '../type'
 
 export function mockFunction(template: Template) {
 	if (typeof template === 'function' && type(template) === 'Function')

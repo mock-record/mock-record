@@ -1,5 +1,6 @@
-import { type, select, selects, concat, ObjectType, isFunction } from 'abandonjs'
+import { select, selects, concat, ObjectType } from 'abandonjs'
 import { ceil, random } from '0math'
+import { type, isFunction } from 'asura-eye'
 import { Template, RuleType } from '../type'
 import * as Random from '../random'
 import { dictionary } from './dictionary'

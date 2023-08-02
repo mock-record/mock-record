@@ -1,6 +1,6 @@
 import { mock } from '../../src'
 import { test } from 'unit-testing-js'
-import { isNoEmpty } from 'check-it-type'
+import { isNoEmpty } from 'asura-eye'
 
 test('test-item', isNoEmpty,
 	{ tobe: true, param: mock('@num(1.1,2.3)'), },

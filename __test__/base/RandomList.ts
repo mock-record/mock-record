@@ -1,6 +1,6 @@
 import { RandomList } from '../../src'
 import { test } from 'unit-testing-js'
-import { isArray } from 'abandonjs'
+import { isArray } from 'asura-eye'
 
 test('test', isArray,
   { param: RandomList(3, 5)({ name: '@name' }), tobe: true },

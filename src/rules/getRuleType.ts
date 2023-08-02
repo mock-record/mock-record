@@ -1,5 +1,5 @@
 import { Template, RuleType } from '../type'
-import { type } from 'abandonjs'
+import { type } from 'asura-eye'
 import { dictionary } from '../generate/dictionary'
 
 const toNumber = (val?: number | string) => {

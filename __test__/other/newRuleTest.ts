@@ -1,5 +1,5 @@
 import { mock } from '../../src'
-import { isNoEmpty } from 'abandonjs'
+import { isNoEmpty } from 'asura-eye'
 import { test } from 'unit-testing-js'
 
 

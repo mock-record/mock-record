@@ -1,6 +1,6 @@
 {
   "name": "mock-record",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "伪造数据",
   "author": "ruihuag",
   "license": "MIT",
@@ -58,8 +58,7 @@
     "@types/node": "^18.11.2",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
-    "abandonjs": "^2.6.0",
-    "check-it-type": "^0.4.2",
+    "abandonjs": "^3.1.1",
     "eslint": "^8.25.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
@@ -74,6 +73,7 @@
     "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.8.4",
-    "unit-testing-js": "0.4.3"
+    "unit-testing-js": "1.0.0",
+    "asura-eye": "^0.6.1"
   }
 }
