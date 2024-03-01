@@ -175,7 +175,8 @@ mock('@aaa') // ababab
 |     操作符      |  描述  |结果|
 | :-------------: | :----: | :------------------------: |
 |    `@title`     |  标题  |`土好保观`|
-| `@title(3,30)`  |  标题  | `传年圆美石所技道只式器知老引明说外海专性油复队运构科文重`| |    `@cword`     | 中文字 |`厂`|
+| `@title(3,30)`  |  标题  | `传年圆美石所技道只式器知老引明说外海专性油复队运构科文重`|
+|    `@cword`     | 中文字 |`厂`|
 | `@sentence(2)`  |  句子  | `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`|
 |   `@sent(2)`    |  句  | `Enim ad aute eiusmod enim occaecat. Aliqua anim dolore eiusmod officia commodo amet nostrud.`|
 | `@paragraph(2)` | 自然段 | <div style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Laboris ex ad duis  ... eiusmod ipsum exercitation.</br>&nbsp;&nbsp;&nbsp;&nbsp;Eiusmod minim aliqua dolor nostrud et. ... cupidatat dolore consequat dolor.</div> |
