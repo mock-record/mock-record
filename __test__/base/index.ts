@@ -1,9 +1,7 @@
 import './address'
-import './time'
-
 import './base'
+import './color'
+import './time'
 import './num'
 import './paragraph'
-import './randomList'
 import './sentence'
-import './color'

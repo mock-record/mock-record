@@ -1,4 +1,3 @@
-
 export interface RuleType extends Record<string, any> {
 	name: string
 	valueType: string
@@ -12,7 +11,7 @@ export interface RuleType extends Record<string, any> {
 	 * 单数字: +number
 	 */
 	random?: boolean
-	multKey?: string[]
+	keys?: string[]
 	handler?: any
 	_this: any
 }
@@ -58,3 +57,4 @@ export type nullToNumberFn = () => number;
 export type stringToString = (value: string) => string;
 export type anyToNumberFn = (value: any) => number;
 export type anyToStringFn = (value: any) => string;
+export type Mock = (template:Template)=>any

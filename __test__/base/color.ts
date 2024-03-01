@@ -1,8 +1,3 @@
-import { mock } from '../../src'
+import { lg } from '../util'
 
-console.log(
-	mock('@color'),
-	mock('@hex'),
-	mock('@rgb'),
-	mock('@rgb2'),
-)
+lg('color', '@color', '@hex', '@rgb', '@rgb2')

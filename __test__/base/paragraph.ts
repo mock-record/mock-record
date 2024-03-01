@@ -1,11 +1,3 @@
-import { testMock } from "../config"
+import { lg } from '../util'
 
-testMock('paragraph',
-	[
-		('@para(2)'),
-		('@paragraph'),
-		('@paragraph(2)'),
-		('@paragraph(3)'),
-		('@paragraph(4)'),
-	]
-)
+lg('paragraph', '@para(2)', '@paragraph', '@paragraph(2)', '@paragraph(3)', '@paragraph(4)')

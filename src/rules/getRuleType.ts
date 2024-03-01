@@ -1,73 +1,62 @@
 import { Template, RuleType } from '../type'
-import { type } from 'asura-eye'
+import { type, likeNumber, isNaN } from 'asura-eye'
 import { dictionary } from '../generate/dictionary'
+import { random } from '0math'
 
 const toNumber = (val?: number | string) => {
-	if (val === undefined) return undefined
-	const result = Number(val)
-	if (isNaN(result)) {
-		return undefined;
-	}
-	return result
+  if (val === undefined) return undefined
+  const result = Number(val)
+  if (isNaN(result)) {
+    return undefined
+  }
+  return result
 }
 
-function getRule(rule: string): Record<string, any> {
+const getTypes = (key: string) => {
+  const types: string[] = key.split('|')
+  if (type.length >= 3) return types
+  return [...types, ...new Array(3 - types.length).fill('')]
+}
 
-	let count = undefined
-	let random = false
-	const [minAndMax, dminAndDmax] = rule.split('.')
-	const [min, max] = minAndMax && minAndMax.split('-') || [undefined, undefined]
-	const [dmin, dmax] = dminAndDmax && dminAndDmax.split('-') || [undefined, undefined]
+const getCount = (min?: string, max?: string) => {
+  if (max === undefined && min !== undefined) {
+    return Number(min)
+  }
 
-	if (max === undefined && min !== undefined) {
-		count = min
-	}
+  if (Number(max) < Number(min)) {
+    return Number(min)
+  }
 
-	if (Number(max) < Number(min)) {
-		count = min
-	}
+  if (likeNumber(min) && likeNumber(max)) {
+    return random(Number(min) - 1, Number(max))
+  }
 
-	if (min && min.indexOf('+') === 0) {
-		random = true
-	}
-
-	return {
-		random,
-		min: toNumber(min),
-		max: toNumber(max),
-		dmin: toNumber(dmin),
-		dmax: toNumber(dmax),
-		count: toNumber(count)
-	}
+  return undefined
 }
 
 export function getRuleType(key: string, template: Template): RuleType {
-	const RuleType: RuleType = {
-		name: '',
-		valueType: type(template),
-		rule: undefined,
-		min: undefined,
-		max: undefined,
-		dmin: undefined,
-		dmax: undefined,
-		count: undefined,
-		random: false,
-		multKey: undefined,
-		handler: undefined,
-		_this: undefined,
-	}
+  const types: string[] = getTypes(key)
+  const [name, rule, keysString]: string[] = types
 
-	const types: string[] = key.split('|')
+  const [minAndMax, dminAndDmax] = rule.split('.')
+  const [min, max] = (minAndMax && minAndMax.split('-')) || [undefined, undefined]
+  const [dmin, dmax] = (dminAndDmax && dminAndDmax.split('-')) || [undefined, undefined]
 
+  const ruleType: RuleType = {
+    name,
+    rule,
+    template,
+    valueType: type(template),
+    min: toNumber(min),
+    max: toNumber(max),
+    dmin: toNumber(dmin),
+    dmax: toNumber(dmax),
+    count: getCount(min, max),
+    random: min && min.indexOf('+') === 0,
+    keys: keysString.split(',').filter(Boolean),
+    handler: dictionary.get(types[3]),
+    _this: this
+  }
 
-	if (!types || types.length < 1) return;
-	if (types[0] !== undefined) RuleType.name = types[0]
-	if (types[1] !== undefined) {
-		RuleType.rule = types[1]
-		Object.assign(RuleType, getRule(types[1]))
-	}
-	if (types[2] !== undefined) RuleType.multKey = types[2].split(',')
-	if (types[3] !== undefined) RuleType.handler = dictionary.get(types[3])
-
-	return RuleType
+  return ruleType
 }

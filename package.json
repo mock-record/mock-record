@@ -1,6 +1,6 @@
 {
   "name": "mock-record",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "伪造数据",
   "author": "ruihuag",
   "license": "MIT",
@@ -59,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "abandonjs": "^3.1.1",
+    "asura-eye": "^0.6.1",
     "eslint": "^8.25.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
@@ -66,6 +67,7 @@
     "lorem-ipsum": "^2.0.8",
     "node-notifier": "^10.0.1",
     "prettier": "^2.7.1",
+    "rh-color": "^1.0.5",
     "rollup": "^2.79.1",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-terser": "^7.0.2",
@@ -73,7 +75,6 @@
     "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.8.4",
-    "unit-testing-js": "1.0.0",
-    "asura-eye": "^0.6.1"
+    "unit-testing-js": "1.0.0"
   }
 }
