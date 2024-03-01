@@ -1,12 +1,13 @@
 import { ObjectType } from 'abandonjs'
 import { isEffectArray, isNumber } from 'asura-eye'
 import type { Template, Mock } from '../type'
-import { getRuleType } from '../rules'
+import { getRuleType } from './getRuleType'
 
 const mockRule = (mock: Mock) =>
   function (collect: Record<string, any>, key: string, template: Template): void {
     const ruleType = getRuleType(key, template)
     const { name, keys = [], count, handler } = ruleType
+    // console.log({ ruleType })
     // 通过 指定key 生成 对象
     let result = template
     if (isEffectArray(keys)) {
@@ -16,12 +17,13 @@ const mockRule = (mock: Mock) =>
       })
       result = temp
     }
+
     if (isNumber(count)) {
       collect[name] = new Array(count).fill('').map(() => mock.bind(this)(result))
     } else {
       collect[name] = mock.bind(this)(result)
     }
-
+    console.log({ ruleType })
     if (handler) collect[name] = handler(collect[name])
     return
   }

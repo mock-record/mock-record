@@ -5,13 +5,13 @@ import { stringify } from 'abandonjs'
 
 const noLogs = [
   //
-  // 'address',
-  // 'base',
-  // 'color',
-  // 'time',
+  'address',
+  'base',
+  'color',
+  'time',
   'num',
   'paragraph',
-  // 'sentence',
+  'sentence',
   // 'object',
 ]
 export const lg = (name: string, ...list: any[]) => {

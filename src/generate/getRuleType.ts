@@ -12,12 +12,6 @@ const toNumber = (val?: number | string) => {
   return result
 }
 
-const getTypes = (key: string) => {
-  const types: string[] = key.split('|')
-  if (type.length >= 3) return types
-  return [...types, ...new Array(3 - types.length).fill('')]
-}
-
 const getCount = (min?: string, max?: string) => {
   if (max === undefined && min !== undefined) {
     return Number(min)
@@ -35,9 +29,9 @@ const getCount = (min?: string, max?: string) => {
 }
 
 export function getRuleType(key: string, template: Template): RuleType {
-  const types: string[] = getTypes(key)
-  const [name, rule, keysString]: string[] = types
-
+  const types: string[] = key.split('|')
+  const [name, rule, keysString, handler]: string[] = types
+  console.log(types)
   const [minAndMax, dminAndDmax] = rule.split('.')
   const [min, max] = (minAndMax && minAndMax.split('-')) || [undefined, undefined]
   const [dmin, dmax] = (dminAndDmax && dminAndDmax.split('-')) || [undefined, undefined]
@@ -54,7 +48,7 @@ export function getRuleType(key: string, template: Template): RuleType {
     count: getCount(min, max),
     random: min && min.indexOf('+') === 0,
     keys: keysString.split(',').filter(Boolean),
-    handler: dictionary.get(types[3]),
+    handler: dictionary.get(handler),
     _this: this
   }
 
