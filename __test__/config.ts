@@ -1,5 +1,5 @@
 import { test, toBe } from 'unit-testing-js'
-import { isEmpty, isEqual } from 'abandonjs'
+import { isEmpty, equal } from 'abandonjs'
 import { mock } from '../src'
 
 export const config = {
@@ -17,7 +17,7 @@ export function testMock(name: string, list: string[]) {
 
 			if (
 				isEmpty(value) || isEmpty(item)
-				|| isEqual(value, item)
+				|| equal(value, item)
 			) {
 				console.log(`${name}:${index} ${item} ${value}`)
 			}

@@ -15,11 +15,6 @@ export function string(min = '0', max = '10'): string {
   return result
 }
 
-// 返回一个随机布尔值
-export function boolean(): boolean {
-  return Math.random() >= 0.5
-}
-
 // id
 export function id(): string {
   // eslint-disable-next-line

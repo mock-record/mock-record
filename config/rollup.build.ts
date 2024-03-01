@@ -4,6 +4,7 @@ import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { eslint } from 'rollup-plugin-eslint'
+import { terser } from 'rollup-plugin-terser'
 import json from '@rollup/plugin-json'
 import pkg from '../package.json'
 
@@ -55,8 +56,7 @@ const rollupConfig = {
       // babel 默认不支持 ts 需要手动添加
       extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts']
     }),
-    // terser()
-
+    terser()
   ]
 }
 
