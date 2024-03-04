@@ -23,7 +23,7 @@ const mockRule = (mock: Mock) =>
     } else {
       collect[name] = mock.bind(this)(result)
     }
-    console.log({ ruleType })
+    // console.log({ ruleType })
     if (handler) collect[name] = handler(collect[name])
     return
   }

@@ -30,8 +30,8 @@ const getCount = (min?: string, max?: string) => {
 
 export function getRuleType(key: string, template: Template): RuleType {
   const types: string[] = key.split('|')
-  const [name, rule, keysString, handler]: string[] = types
-  console.log(types)
+  const [name, rule = '', keysString = '', handler = '']: string[] = types
+  
   const [minAndMax, dminAndDmax] = rule.split('.')
   const [min, max] = (minAndMax && minAndMax.split('-')) || [undefined, undefined]
   const [dmin, dmax] = (dminAndDmax && dminAndDmax.split('-')) || [undefined, undefined]

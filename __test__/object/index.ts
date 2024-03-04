@@ -22,6 +22,10 @@ lg(
   // { 'name|3|a,b,c': '@name' },
 
   { 'name|3-8|a,b,c|stringify': '@name' },
+  { 'name||a,b,c|stringify': '@name' },
+  { 'name||a,b,c': '@name' },
+  { name: '@name' },
+  { 'list|2-3': { name: '@name' } }
   // { 'name|3': '@name' },
   // { 'name|3-5': '@name' },
   // { 'num|1-9': 1 },
